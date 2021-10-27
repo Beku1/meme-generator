@@ -5,7 +5,7 @@ var gImgId= 19
 var gMeme = []
 
 
-function init(){
+function initMemes(){
    gImgs = createImgs()
    
 }
@@ -14,7 +14,7 @@ function init(){
 function createImg(id,keywords){
     let meme = {
         id,
-        url:`/img/${id}.jpg`,
+        url:`/img/memes/${id}.jpg`,
         keywords
     }
     return meme
@@ -35,3 +35,25 @@ function getImgs(){
     return gImgs;
 }
 
+
+function getMeme(){
+    return gMeme
+}
+
+function setMeme(img){
+   gMeme = {
+       selectedImgId:img.id,
+       selectedLineIdx:0,
+        lines:{
+            text:'hello',
+            size:40,
+            align: 'center',
+            color:'white',
+            posX:getCanvasPos().x,
+            posY:getCanvasPos().y
+        }
+ 
+      
+   }
+   console.log(gMeme)
+}
