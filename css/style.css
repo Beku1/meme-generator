@@ -1,0 +1,39 @@
+
+
+
+
+
+
+
+
+
+/* LAYOUT */
+
+.main-container{
+    max-width:980px;
+    margin:0 auto;
+}
+
+
+
+
+
+
+
+
+ /* HELPERS */
+
+ .grid{
+     display:grid;
+ }
+
+ .clean-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .flex{
+      display:flex;
+  }
+
