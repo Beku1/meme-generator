@@ -7,10 +7,10 @@
     <title>Document</title>
     <link rel="stylesheet" href="/css/style.css">
 </head>
-<body>
+<body onload="init()">
     <header class="header-container full">
-        <div class="main-container">
-            <div class="logo">
+        <div class="main-layout">
+            <!-- <div class="logo-container"><img class="logo" src="/img/assets/LOGO.png" alt=""></div> -->
     <nav class="main-menu">
         <ul class="clean-list flex">
             <li class="gallery"><a href="#gallery">gallery</a></li>
@@ -18,11 +18,22 @@
             <li class="about"><a href="#about">about</a></li>
         </ul>
     </nav>
-</div>
+
 </div>
 </header>
-<main class="main-content main-container grid">
+<main class="main-galery-content main-layout grid">
+    <div class="gallery"></div>
 </main>
+
+<div class="memes main-layout hidden">
+    <div class="grid memes-gallery"></div>
+</div>
+
+
+<div class="meme-gen hidden">
+    <canvas class="meme-gen-canvas"></canvas>
+</div>
+
 
 
     <script src="/js/services/meme-service.js"></script>
