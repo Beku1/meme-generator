@@ -1,41 +1,331 @@
-
-
-
-
-
-
-
-
-/* LAYOUT */
-
-.main-layout{
-    max-width:980px;
-    margin:0 auto;
-}
-
-
-
-
-
-
-
-
- /* HELPERS */
-
- .grid{
-     display:grid;
- }
-
- .clean-list {
-    list-style-type: none;
+* {
+    box-sizing: border-box;
+  }
+  
+  @font-face {
+    font-family: Roboto-med;
+    src: url(fonts/Roboto-Med/Roboto-Medium.ttf);
+  }
+  
+  body {
     margin: 0;
+  }
+  
+  .main-layout {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #dbdbdb;
+  }
+  
+  .logo {
+    margin-inline-start: 20px;
+    margin-block-end: 9px;
+    margin-block-start: 9px;
+  }
+  
+  .logo img {
+    height: 32px;
+    width: 152px;
+  }
+  
+  .main-menu {
+    margin-inline-end: 30px;
+  
+    width: 350px;
+  }
+  
+  .nav-list {
+    font-family: Roboto-med;
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+  }
+  
+  .nav-list a {
+    text-decoration: none;
+    color: #989898;
+    font-family: Roboto;
+    margin-block-end: 15px;
+    margin-block-start: 15px;
+  }
+  .nav-list a:hover {
+    color: #ff9826;
+  }
+  
+  /* gallery */
+  
+  .gallery {
+    padding: 30px 30px;
+    margin-inline-end: 30px;
+    margin-inline-start: 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+  }
+  .gallery img {
+    background-size: contain;
+    border-radius: 10px;
+    width: 100%;
+    box-shadow: 1px 4px 5px #26282c;
+    transition: 0.2s;
+    cursor: pointer;
+  }
+  
+  .search {
+    width: 100%;
+    display: flex;
+    padding: 0 20px;
+  }
+  
+  .search-bar {
+    font-size: 1.1rem;
+    width: 100%;
+    height: 42px;
+    background: white;
+    margin-inline-start: 20px;
+    margin-inline-end: 20px;
+    padding-inline-start: 4%;
+    margin-block-start: 30px;
+    border-radius: 81px;
+    border: 1px solid #e5e5e5;
+  }
+  
+  .search-bar:focus {
+    outline-style: none;
+  }
+  
+  /* canvas */
+  
+  .canvas-container {
+    display: flex;
+    height: 60%;
+    width: 50%;
+    margin-block-start: 10%;
+    margin-inline-start: 10%;
+  }
+  
+  .meme-gen {
+    display: flex;
+    justify-content: space-between;
+    height: 94vh;
+  }
+  
+  .canvas-btns {
+    height: 94vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    background-color: #f8f8f8;
+    width: 450px;
+    margin-inline-start: 10%;
+  
+    padding-block-end: 10%;
+  
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  /* canvas btns */
+  
+  .first-line-design {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    align-items: center;
+  }
+  .first-line-design h1 {
+    font-size: 1.5rem;
+    font-family: Roboto-med;
+    color: #727272;
+    font-weight: 200;
+  }
+  
+  .first-line-btns {
+    display: flex;
+    justify-content: space-between;
+    width: 25%;
+   
+    align-items: center;
+  }
+  
+  .first-line-btns button {
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 1.4rem;
+    color: #727272;
+  }
+  
+  /* sec */
+  
+  .sec-line-design {
+    border: 1px solid #ebebeb;
+    background-color: #fff;
+    display: flex;
+    width: 90%;
+    flex-direction: column;
+    height: 150px;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 5px;
+  }
+  
+  .text-field {
+    width: 100%;
+  }
+  .meme-text {
+    border: 0;
+    width: 100%;
+    height: 100px;
+    padding: 20px 30px;
+    font-size: 1.2rem;
+    border-top: 1px solid #ebebeb;
+  }
+  .meme-text:focus {
+    outline-style: none;
+  }
+  
+  .above {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
+  .above select {
+    cursor: pointer;
+  }
+  .above button {
+    border: 0;
+    width: 20px;
+    height: 20px;
+    background: 0;
+    cursor: pointer;
+  }
+  .above span {
+    font-size: 40px;
+  }
+  
+  .stroke-text-color {
+    border: 1px solid grey;
+    height: 20px;
     padding: 0;
+    width: 20px;
+    background: none;
+  }
+  .text-color {
+    border: 0;
+    height: 20px;
+    width: 20px;
+    padding: 0;
+    background: 0;
+  }
+  
+  .fonts {
+    width: 50%;
+    height: 23px;
+    border: 1px solid #ebebeb;
+  }
+  
+  .nevigation-btns {
+    width: 90%;
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .nevigation-btns button {
+    text-align: center;
+    font-size: 25px;
+    width: 50px;
+    height: 50px;
+    box-shadow: 1px 1px 1px 0px black;
+    text-shadow: 0px 0px 5px black;
+    background-color: #fff;
+    transition: 0.2s;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  .nevigation-btns button:active {
+    transform: scale(0.9);
+  }
+  
+  
+  .social {
+    display: flex;
+    justify-content: space-around;
+    margin-block-start: 65%;
+    width: 80%;
+    height: 40px;
+
+    
   }
 
-  .flex{
-      display:flex;
+  .download a{
+   text-decoration: none;
+  color:#f8f8f8;
+  
   }
 
-  .hidden{
-      display:none;
+  
+  
+  .social button {
+    width:70%;
+    height: 100%;
+    text-align: center;
+    font-size: 25px;
+    box-shadow: 0px 0px 5px 0px black;
+    background-color: #ff9826;
+    transition: 0.2s;
+    border-radius: 10px;
+    color: white;
+    border-color: white;
+    cursor: pointer;
   }
+
+  
+  .social button:active {
+    transform: scale(0.9);
+  }
+
+  @media (min-width:360px) and (max-width:940px) {
+      .meme-gen{
+          flex-wrap:wrap;
+          height:100%;
+      }
+      .canvas-container{
+          width:90%;
+      }
+      .canvas-btns{
+        align-items: center;
+        margin-block-start: 20%;
+    margin-inline-start: 10%;
+    height:30vh;
+    width: 100%;
+        margin-inline-end: 5%;
+      }
+      .sec-line-design{
+          height:60px
+      }
+      .nevigation-btns{
+          margin-top:150px;
+          justify-content: space-evenly;
+         
+      }
+      .social{
+        margin-block-start: 10%;
+      }
+
+  }
+
+
+  @media (min-width:736px) and (max-width:940px){
+      .canvas-btns{
+        width: 100%;
+        margin-inline-end: 5%;
+      }
+  }
+  

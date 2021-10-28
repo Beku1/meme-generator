@@ -19,13 +19,14 @@ function renderGallery(){
         strHTML += `<img src ="${img.url}" id="img${img.id}" onclick="openGen(this)">`
     })
     elGallery.innerHTML = strHTML
+
 }
 
 
 
 
 function toggleGen(isGen){
-    let gallery = document.querySelector('.gallery')
+    let gallery = document.querySelector('.main-gallery')
     let memeGen = document.querySelector('.meme-gen')
     if(isGen){
     gallery.classList.toggle('hidden')

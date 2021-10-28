@@ -5,37 +5,90 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="./css/style.css" />
   </head>
-  <body onload="init()">
-    <header class="header-container full">
+  
+<body onload="init()">
+    <header>
       <div class="main-layout">
-        <!-- <div class="logo-container"><img class="logo" src="/img/assets/LOGO.png" alt=""></div> -->
-        <nav class="main-menu">
-          <ul class="clean-list flex">
-            <li class="gallery-nav"><a href="#gallery" onclick="toggleGen(false)">gallery</a></li>
-            <li class="memes-nav"><a href="#memes">memes</a></li>
-            <li class="about-nav"><a href="#about">about</a></li>
+        <div class="logo"><img src="./img/assets/Logoo.png" alt=""></div>
+        <div class="main-menu">
+          <ul class="nav-list">
+            <li class="gallery-nav"><a href="#gallery" onclick="toggleGen(false)">Gallery</a></li>
+            <li class="memes-nav"><a href="#memes">Memes</a></li>
+            <li class="about-nav"><a href="#about">About</a></li>
           </ul>
-        </nav>
+        </div>
       </div>
     </header>
-    <main class="main-galery-content main-layout grid">
+  
+    <main class="main-gallery">
+      <div class="search"><input type="text" placeholder="Search" class="search-bar"></div>
+  
       <div class="gallery"></div>
     </main>
-
+  
     <div class="memes main-layout hidden">
       <div class="grid memes-gallery"></div>
     </div>
-
+  
     <div class="meme-gen hidden">
-      <canvas class="meme-gen-canvas"></canvas>
-      <input type="text" name="text" id="0" placeholder="enter your meme text" oninput="renderText(this.id)" />
+      <div class="canvas-container">
+        <canvas class="meme-gen-canvas"></canvas>
+      </div>
+      <div class="canvas-btns">
+        <div class="first-line-design">
+          <h1>Edit Text Lines</h1>
+          <div class="first-line-btns">
+  
+            <button class="switch-text" onclick="switchTextLine()">⇅</button>
+            <button class="add-line" onclick="addTextLine()">+</button>
+            <button class="delete-line" onclick="deleteLine()">🗑</button>
+          </div>
+        </div>
+        <div class="sec-line-design">
+          <div class="above">
+          <select class="fonts" name="font" id="font" onclick="changeFonts(this.value)">
+            <option value="Impact">Impact</option>
+            <option value="tahoma">tahoma</option>
+            <option value="Ariel">Ariel</option>
+        
+          </select>
+          <button class="text-font-down" onclick="fontSizeChange('-')">➖</button>
+          <button class="text-font-up" onclick="fontSizeChange('+')">➕</button>
+          <span>|</span>
+          <button class="align-text-left" onclick="alignText('right')"><i class="fas fa-align-right"></i></button>
+          <button class="align-text-center" onclick="alignText('center')"><i class="fas fa-align-center"></i></button>
+          <button class="align-text-right" onclick="alignText('left')"><i class="fas fa-align-left"></i></button>
+  
+          <span>|</span>
+          <input type="color" class="stroke-text-color" oninput="changeStrokeColor(value)">
+          <input class="text-color" type="color" oninput="setTextColor(value)" />
+        </div>
+          <div class="text-field">
+            <input class="meme-text" type="text" name="text" id="0" placeholder="enter your meme text"
+              oninput="changeText(value)" />
+    
+          </div>
+        </div>
+        <div class="nevigation-btns">
+          <button class="text-left" onclick="moveText('left')">⬅</button>
+          <button class="text-down" onclick="moveText('down')">⬇</button>
+          <button class="text-up" onclick="moveText('up')">⬆</button>
+          <button class="text-right" onclick="moveText('right')">➡</button>
+        </div>
+        <div class="social">
+          <button onclick="shareImg()" >Share</button>
+          <button class="download"><a href="#" onclick="downloadImg(this)" download="my-meme.jpg">Download</a></button>
+        </div>
+      </div>
     </div>
-
-    <script src="/js/services/meme-service.js"></script>
-    <script src="/js/meme-controller.js"></script>
-    <script src="js/canvas-controller.js"></script>
-    <script src="/js/services/canvas-service.js"></script>
+    
+ <script src="https://kit.fontawesome.com/84b9566613.js" crossorigin="anonymous"></script>
+    <script src="./js/services/meme-service.js"></script>
+    <script src="./js/meme-controller.js"></script>
+    <script src="./js/canvas-controller.js"></script>
+    <script src="./js/services/canvas-service.js"></script> 
+   
   </body>
 </html>
