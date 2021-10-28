@@ -4,7 +4,7 @@
   
   @font-face {
     font-family: Roboto-med;
-    src: url(fonts/Roboto-Med/Roboto-Medium.ttf);
+    src: url(./fonts/Roboto-Med/Roboto-Medium.ttf);
   }
   
   body {
