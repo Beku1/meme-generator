@@ -1,12 +1,42 @@
 'use strict'
 var gElCanvas
 var gCtx
-var gImg
+
+
 
 function initCanvas(){
     setCanvas()
     addMouseListeners()
 }
+
+
+function openGen(img){
+    toggleGen(true)
+    setImg(img)
+    setMemeImg(img) 
+    resizeCanvas()
+    updateMemes()
+    inputText()
+    setMemeIdx()
+    var ctx = getCtx()
+    ctx.drawImage(img,0,0,gElCanvas.width, gElCanvas.height)  
+}
+
+function openGenReady(memeIdx){
+    toggleGen(true)
+    var deleteButton = document.querySelector('.delete-meme')
+    var savedMemes = getMemesGallery()
+    var imgId = savedMemes[memeIdx].memeEditingInfo.selectedImgId
+    var elImg = document.getElementById(imgId)
+    setImg(elImg)
+    setEditedMeme(savedMemes[memeIdx].memeEditingInfo) 
+    resizeCanvas()
+    deleteButton.classList.remove('hidden')
+    setMemeIdx(memeIdx)
+}
+
+
+
 
 function setCanvas(){
     gElCanvas = document.querySelector('.meme-gen-canvas')
@@ -19,54 +49,23 @@ function getCanvas(){
 }
 
 function resizeCanvas(){
+   
     var img = getImg()
     var elCanvas = getCanvas()
     var elContainer = document.querySelector(".canvas-container");
     elCanvas.width = elContainer.offsetWidth - 50;
     elCanvas.height = (elCanvas.width * img.height) / img.width;
     updateMemes()
-    renderMeme()
-}
-
-function changeFonts(value){
-   var meme = getMeme()
-   meme.lines[meme.selectedLineIdx].font = value
-   renderMeme()
-}
-
-function downloadImg(elLink) {
-    var imgContent = gElCanvas.toDataURL('image/jpeg')
-    elLink.href = imgContent
+    var meme = getMeme()
+    
+    renderMeme(meme)
+    
+        
+    
+    
 }
 
 
-function shareImg(){
-    var imgDataUrl = gElCanvas.toDataURL("image/jpeg");
-    function onSuccess(uploadedImgUrl){
-        const encodedUploadedImgUrl = encodeURIComponent(uploadedImgUrl)
-    window.open(`https://www.facebook.com/sharer/sharer.php?u=${uploadedImgUrl}&t=${uploadedImgUrl}`)
-
-    }
-   doUploadImg(imgDataUrl,onSuccess)
-}
-function doUploadImg(imgDataUrl, onSuccess) {
-
-    const formData = new FormData();
-    formData.append('img', imgDataUrl)
-
-    fetch('//ca-upload.com/here/upload.php', {
-        method: 'POST',
-        body: formData
-    })
-    .then(res => res.text())
-    .then((url)=>{
-        console.log('Got back live url:', url);
-        onSuccess(url)
-    })
-    .catch((err) => {
-        console.error(err)
-    })
-}
 
 function addMouseListeners() {
     window.addEventListener("resize", () => {
@@ -74,27 +73,6 @@ function addMouseListeners() {
     });
   }
 
-function openGen(img){
-    toggleGen(true)
-    setImg(img)
-    setMeme(img) 
-    resizeCanvas()
-    updateMemes()
-    inputText()
-    
-    var ctx = getCtx()
-    ctx.drawImage(img,0,0,gElCanvas.width, gElCanvas.height)
-    
-    
-}
-
-function getImg(){
-    return gImg
-}
-
-function setImg(img){
-    gImg = img
-}
 
 
 function inputText() {
@@ -106,16 +84,16 @@ function inputText() {
     }
     var input = document.querySelector('.meme-text');
     input.value = meme.lines[meme.selectedLineIdx].text;
-   
+     
   }
 
 
 
-function renderMeme(){
+function renderMeme(meme){
      clearCanvas()
-     var meme = getMeme()
      renderImage(meme.selectedImgId)
     renderText(meme)
+    setMeme(meme)
 }
 
 
@@ -130,18 +108,11 @@ function getCanvasPos(){
 
 }
 
-function changeText(text){
-    var meme = getMeme()
-    if(meme.lines.length === 0 ) {
-        addTextLine()
-    }
-  meme.lines[meme.selectedLineIdx].text = text
-  renderMeme()
-}
+
 
 function renderImage(){
     var img = getImg()
-  
+    console.log(img)
    gCtx.drawImage(img,0,0,gElCanvas.width,gElCanvas.height)
 }
 
@@ -155,7 +126,7 @@ function renderText(meme){
       gCtx.fillText(memeInfo.text.toUpperCase(),memeInfo.posX , memeInfo.posY)
       gCtx.strokeText(memeInfo.text.toUpperCase(),memeInfo.posX,memeInfo.posY)
   })
-  
+  setMeme(meme)
 }
 
 

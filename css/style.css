@@ -71,11 +71,37 @@
     transition: 0.2s;
     cursor: pointer;
   }
+
+  .meme-gallery{
+    padding: 30px 30px;
+    margin-inline-end: 30px;
+    margin-inline-start: 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+  }
+  .meme-gallery img{
+    background-size: contain;
+    border-radius: 10px;
+    width: 100%;
+    box-shadow: 1px 4px 5px #26282c;
+    transition: 0.2s;
+    cursor: pointer;
+  }
   
   .search {
     width: 100%;
     display: flex;
     padding: 0 20px;
+  }
+
+  .memes-gallery{
+    padding: 30px 30px;
+    margin-inline-end: 30px;
+    margin-inline-start: 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
   }
   
   .search-bar {
@@ -257,12 +283,32 @@
   .social {
     display: flex;
     justify-content: space-around;
-    margin-block-start: 65%;
+    margin-block-start: 5%;
     width: 80%;
     height: 40px;
 
     
   }
+
+  .save-btn{
+      margin-block-end: -20px;
+  }
+
+  .delete-meme{
+    width:50px;
+    height:50px;
+    font-size:40px;
+    text-align: center;
+    margin-left:30px;
+    
+  }
+
+  .save-meme{
+      width:50px;
+      height:50px;
+      font-size:40px
+  }
+
 
   .download a{
    text-decoration: none;
@@ -305,7 +351,7 @@
     margin-inline-start: 10%;
     height:30vh;
     width: 100%;
-        margin-inline-end: 5%;
+        margin-inline-end: 10%;
       }
       .sec-line-design{
           height:60px
@@ -315,6 +361,10 @@
           justify-content: space-evenly;
          
       }
+      .save-btn{
+        margin-block-start: 20px;
+        margin-block-end: -30px;
+    }
       .social{
         margin-block-start: 10%;
       }
