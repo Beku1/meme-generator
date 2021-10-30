@@ -8,18 +8,21 @@
     <link rel="stylesheet" href="./css/style.css" />
   </head>
   
-<body onload="init()">
+<body onload="init()"> 
+    <div class="screen"></div>
     <header>
+       
       <div class="main-layout">
         <div class="logo"><img src="./img/assets/Logoo.png" alt=""></div>
-        <div class="main-menu">
+        <div class="menu" onclick="toggleMenu()"><i class="icon fas fa-bars"></i></div>
+        <div class="main-menu ">
           <ul class="nav-list">
-            <li class="gallery-nav"><a href="#gallery" onclick="toggleGen(false)">Gallery</a></li>
-            <li class="memes-nav"><a href="#memes" onclick="toggleGen()">Memes</a></li>
-            <li class="about-nav"><a href="#about">About</a></li>
+            <li class="gallery-nav"><a href="#gallery" onclick="toggleGen(false); closeMenu()">Gallery</a></li>
+            <li class="memes-nav"><a href="#memes" onclick="toggleGen(); closeMenu()">Memes</a></li>
           </ul>
         </div>
       </div>
+    
     </header>
   
     <main class="main-gallery">
@@ -28,7 +31,7 @@
       <div class="gallery"></div>
     </main>
 
-    <div class="main-memes">
+    <div class="main-memes hidden">
         <div class="search"><input type="text" placeholder="Search" class="search-bar"></div>
         <div class="meme-gallery"></div>
     </div>
@@ -84,15 +87,15 @@
         </div>
         <div class="save-btn">
             <button class="save-meme" onclick="saveMeme()"><i class="fas fa-save"></i></button>
-            <button class="delete-meme " onclick="deleteMeme()"><i class="fas fa-ban"></i></button>
+            <button class="delete-meme hidden" onclick="deleteMeme()"><i class="fas fa-ban"></i></button>
         </div>
         <div class="social">
           <button onclick="shareImg()" >Share</button>
           <button class="download" onclick="downloadImg(this)"><a href="#" download="my-meme.jpg">Download</a></button>
         </div>
       </div>
-    </div>
     
+    </div>
  <script src="https://kit.fontawesome.com/84b9566613.js" crossorigin="anonymous"></script>
     <script src="./js/services/gallery-service.js"></script>
     <script src="./js/gallery-controller.js"></script>

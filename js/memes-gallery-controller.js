@@ -10,10 +10,13 @@ function renderMemesGallery(){
     
     let strHTML = ''
     let elMemesGallery = document.querySelector('.meme-gallery')
-    memes.forEach((meme,idx)=>{
+         memes.forEach((meme,idx)=>{
         strHTML += `<img src ="${meme.memeImg}" id="${meme.memeEditingInfo.selectedImgId}" onclick="openGenReady(${idx})">`
     })
+
     elMemesGallery.innerHTML = strHTML
+    
+   
 }
 
 

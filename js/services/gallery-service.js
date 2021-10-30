@@ -2,6 +2,7 @@
 
 var gImgs = []
 var gImgId = 19
+var gId = 1
 
 var gKeywords = { funny: 5, sleepy: 5, politics: 4, OG: 7, cute: 5 }
 
@@ -18,9 +19,36 @@ function createImg(id, keywords) {
   return meme
 }
 
+function createUploadedImg(img){
+  var id = getId()
+var img = {
+  id,
+  url:img,
+  keywords:['new']
+}
+setId(id+1)
+addImg(img)
+}
+
+function addImg(imgInfo){
+  var imgs = getImgs()
+  imgs.push(imgInfo)
+
+}
+
+function getId(){
+  return gId
+}
+
+function setId(id){
+  gId = id
+
+}
+
 
 
 function createImgs() {
+  
   var keywords = [
     ['politics', 'funny'],
     ['cute', 'love'],
@@ -43,7 +71,9 @@ function createImgs() {
   ]
   let imgs = []
   for (var i = 1; i <= 18; i++) {
-    imgs.push(createImg(i, keywords[i - 1]))
+    var id = getId()
+    imgs.push(createImg(id, keywords[id]))
+    setId(++id)
   }
   return imgs
 }
@@ -58,6 +88,35 @@ function getImgById(id){
       }
 
   })
+}
+
+function onImgInput(ev) {
+ var elSaveMeme = document.querySelector('.save-meme')
+ elSaveMeme.classList.add('hidden')
+  var img = URL.createObjectURL(ev.target.files[0])
+   
+  createUploadedImg(img)
+  loadImageFromInput(ev, goToOpenGen);
+}
+function goToOpenGen(ev){
+  openGen(ev,false)
+
+}
+
+function loadImageFromInput(ev, onImageReady) {
+  var reader = new FileReader();
+
+  reader.onload = function (event) {
+    var img = new Image();
+    img.onload = onImageReady.bind(null, img);
+    img.src = event.target.result;
+    gImg = img;
+  };
+  reader.readAsDataURL(ev.target.files[0]);
+}
+
+function setImgs(imgs){
+  gImgs = imgs
 }
 
 function getImgs() {

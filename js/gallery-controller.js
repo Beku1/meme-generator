@@ -13,11 +13,20 @@ function init(){
 
 function renderGallery(){
     let imgs = getImgs()
-    let strHTML = ''
+    let strHTML = `<label for="image" class="placeholder-image">
+    <img src="https://dummyimage.com/300x300/878787/fff.png&text=Upload+image"/>
+  </label>
+    <input
+    id="image"
+    type="file"
+    class="file-input"
+    name="image"
+    onchange="onImgInput(event)"
+  />`
     console.log(imgs)
     let elGallery = document.querySelector('.gallery')
     imgs.forEach(img =>{
-        strHTML += `<img src ="${img.url}" id="${img.id}" onclick="openGen(this)">`
+        strHTML += `<img src ="${img.url}" id="${img.id}" onclick="openGen(this,${true})">`
     })
     elGallery.innerHTML = strHTML
 
