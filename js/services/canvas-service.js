@@ -30,8 +30,6 @@ function resetMemeLines() {
   setMeme(meme)
 }
 
-
-
 function updateMemes() {
   var meme = getMeme()
   var pos = getCanvasPos()
@@ -48,7 +46,6 @@ function updateMemes() {
       currMeme.posY = pos.y / 2
     }
   })
-
 
   setMeme(meme)
 }
@@ -129,7 +126,7 @@ function setTextColor(color) {
 
 function deleteLine() {
   var meme = getMeme()
-  if (meme.lines.length-1 > 0) {
+  if (meme.lines.length - 1 > 0) {
     meme.lines.splice(meme.selectedLineIdx, 1)
     meme.selectedLineIdx = 0
     renderMeme(meme)
@@ -139,7 +136,7 @@ function deleteLine() {
     renderImage(meme.selectedImgId)
     setMeme(meme)
   }
-  
+
   inputText()
 }
 
@@ -160,18 +157,18 @@ function deleteMeme() {
 
 function saveMeme() {
   var meme = getMeme()
-  renderMeme(getMeme(),true)
+  renderMeme(getMeme(), true)
   var memeImg = getElCanvas().toDataURL()
   var savedMemes = []
   var fullMeme = {
     memeImg,
     memeEditingInfo: meme,
   }
-  
+
   if (loadFromStorage('savedMemes')) savedMemes = loadFromStorage('savedMemes')
   if (getMemeIdx() != '') savedMemes[getMemeIdx()] = fullMeme
   else if (getMemeIdx() === '') savedMemes.push(fullMeme)
-  
+
   saveToStorage('savedMemes', savedMemes)
 }
 
@@ -254,23 +251,21 @@ function setMemeImg(img) {
 
 function renderSelectedLine(isSaving = false) {
   var meme = getMeme()
-   if(isSaving)return
+  if (isSaving) return
   var pos = {
     x: meme.lines[meme.selectedLineIdx].posX,
     y: meme.lines[meme.selectedLineIdx].posY,
   }
- 
-  
+
   if (meme.selectedLineIdx <= meme.lines.length) {
-      
-  isTextClicked(pos)
-}
+    isTextClicked(pos)
+  }
 }
 
 function onDown(ev) {
   const pos = getEvPos(ev)
   if (!isTextClicked(pos)) return
-   
+
   document.body.style.cursor = 'grabbing'
 }
 
@@ -294,5 +289,3 @@ function getEvPos(ev) {
   }
   return pos
 }
-
-

@@ -83,11 +83,10 @@ function inputText() {
 function renderMeme(meme, isSaving = false) {
   clearCanvas()
   setMeme(meme)
- 
+
   renderImage(meme.selectedImgId)
   renderText(meme)
   renderSelectedLine(isSaving)
-  
 }
 
 function getCanvasPos() {
@@ -135,7 +134,7 @@ function isTextClicked(clickedPos) {
   })
 
   if (clickedIdx > -1) {
-      memes.selectedLineIdx = clickedIdx
+    memes.selectedLineIdx = clickedIdx
     renderClickedText(
       rectPos[clickedIdx].posXRectStart,
       rectPos[clickedIdx].posXRectEnd,
@@ -185,19 +184,19 @@ function getRectPos(memes, idx = '') {
 
 function addMouseListeners() {
   var canvas = getElCanvas()
-//   canvas.addEventListener('mousemove', onMove);
+  //   canvas.addEventListener('mousemove', onMove);
   window.addEventListener('resize', () => {
     resizeCanvas()
   })
   canvas.addEventListener('mousedown', onDown)
-//   canvas.addEventListener('mouseup', onUp);
+  //   canvas.addEventListener('mouseup', onUp);
 }
 
 function addTouchListeners() {
-  var canvas = getElCanvas();
-//   canvas.addEventListener('touchmove', onMove);
-  canvas.addEventListener('touchstart', onDown);
-//   canvas.addEventListener('touchend', onUp);
+  var canvas = getElCanvas()
+  //   canvas.addEventListener('touchmove', onMove);
+  canvas.addEventListener('touchstart', onDown)
+  //   canvas.addEventListener('touchend', onUp);
 }
 
 function clearCanvas() {
@@ -212,18 +211,16 @@ function getElCanvas() {
   return gElCanvas
 }
 
-
-function toggleMenu(){
-    document.querySelector(".screen").classList.toggle("open");
-    document.querySelector(".main-menu").classList.toggle("open-menu");
-    document.querySelector(".nav-list").classList.toggle("nav-open");
-    document.querySelector(".nav-list").classList.toggle("opacity")
-
+function toggleMenu() {
+  document.querySelector('.screen').classList.toggle('open')
+  document.querySelector('.main-menu').classList.toggle('open-menu')
+  document.querySelector('.nav-list').classList.toggle('nav-open')
+  document.querySelector('.nav-list').classList.toggle('opacity')
 }
 
-function closeMenu(){
-    document.querySelector(".screen").classList.remove("open");
-    document.querySelector(".main-menu").classList.remove("open-menu");
-    document.querySelector(".nav-list").classList.remove("nav-open");
-    document.querySelector(".nav-list").classList.remove("opacity")
+function closeMenu() {
+  document.querySelector('.screen').classList.remove('open')
+  document.querySelector('.main-menu').classList.remove('open-menu')
+  document.querySelector('.nav-list').classList.remove('nav-open')
+  document.querySelector('.nav-list').classList.remove('opacity')
 }

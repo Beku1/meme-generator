@@ -1,26 +1,20 @@
 'use strict'
 
-function initMemesGallery(){
-   renderMemesGallery()
+function initMemesGallery() {
+  renderMemesGallery()
 }
 
+function renderMemesGallery() {
+  var memes = loadFromStorage('savedMemes')
 
-function renderMemesGallery(){
-    var memes = loadFromStorage('savedMemes')
-    
-    let strHTML = ''
-    let elMemesGallery = document.querySelector('.meme-gallery')
-         memes.forEach((meme,idx)=>{
-        strHTML += `<img src ="${meme.memeImg}" id="${meme.memeEditingInfo.selectedImgId}" onclick="openGenReady(${idx})">`
-    })
+  let strHTML = ''
+  let elMemesGallery = document.querySelector('.meme-gallery')
+  memes.forEach((meme, idx) => {
+    strHTML += `<img src ="${meme.memeImg}" id="${meme.memeEditingInfo.selectedImgId}" onclick="openGenReady(${idx})">`
+  })
 
-    elMemesGallery.innerHTML = strHTML
-    
-   
+  elMemesGallery.innerHTML = strHTML
 }
-
-
-
 
 // function renderGallery(){
 //     let imgs = getImgs()
