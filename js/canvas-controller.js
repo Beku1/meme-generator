@@ -15,7 +15,6 @@ function openGen(img, isSaveable = false) {
     var elSaveMeme = document.querySelector('.save-meme')
     elSaveMeme.classList.remove('hidden')
   }
-
   toggleGen(true)
   setImg(img)
   setMemeImg(img)
@@ -124,10 +123,11 @@ function isTextClicked(clickedPos) {
 
   var clickedIdx
   rectPos.forEach((pos) => {
+    console.log('clickedPos.x',clickedPos.x ,'\n pos.posXRectStart',pos.posXRectStart,'\npos.posXend',pos.posXend,'\nclickedPos.y',clickedPos.y,'\npos.posYRectStart ',pos.posYRectStart,'\npos.posYend',pos.posYend)
     if (
-      clickedPos.x >= pos.posXstart &&
+      clickedPos.x >= pos.posXRectStart &&
       clickedPos.x <= pos.posXend &&
-      clickedPos.y >= pos.posYstart &&
+      clickedPos.y >= pos.posYRectStart &&
       clickedPos.y <= pos.posYend
     )
       clickedIdx = pos.memeIdx
@@ -142,6 +142,7 @@ function isTextClicked(clickedPos) {
       rectPos[clickedIdx].posYRectEnd
     )
     setMeme(memes)
+    return true
   }
 }
 function renderClickedText(posXstart, posXend, posYstart, posYend) {
@@ -155,18 +156,21 @@ function getRectPos(memes, idx = '') {
   var ctx = getCtx()
   var rectPos = []
   memes.lines.forEach((meme, memeIdx) => {
+    console.log('posY',meme.posY)
     var textSize = ctx.measureText(meme.text).width
     var fontSize = meme.size
     var posX = meme.posX
     var posY = meme.posY
     var posXstart = posX - textSize / 2 - 20
-    var posYstart = posY - fontSize / 1.5
+    var posYstart = posY - fontSize 
     var posXend = posX + textSize / 2 + 20
     var posYend = posY + fontSize / 1.5
     var posXRectStart = posX - textSize / 2 - 30
     var posYRectStart = posY - fontSize - 15
     var posXRectEnd = textSize + 60
     var posYRectEnd = fontSize * 2
+    var posXend = posXRectStart + posXRectEnd 
+    var posYend = posYRectStart + posYRectEnd 
     rectPos.push({
       posXstart,
       posYstart,
@@ -184,19 +188,21 @@ function getRectPos(memes, idx = '') {
 
 function addMouseListeners() {
   var canvas = getElCanvas()
-  //   canvas.addEventListener('mousemove', onMove);
+  canvas.addEventListener('mousedown', onDown)
+    canvas.addEventListener('mousemove', onMove);
   window.addEventListener('resize', () => {
     resizeCanvas()
   })
-  canvas.addEventListener('mousedown', onDown)
-  //   canvas.addEventListener('mouseup', onUp);
+  
+    canvas.addEventListener('mouseup', onUp);
 }
 
 function addTouchListeners() {
   var canvas = getElCanvas()
-  //   canvas.addEventListener('touchmove', onMove);
+    
   canvas.addEventListener('touchstart', onDown)
-  //   canvas.addEventListener('touchend', onUp);
+  canvas.addEventListener('touchmove', onMove);
+    canvas.addEventListener('touchend', onUp);
 }
 
 function clearCanvas() {

@@ -4,17 +4,22 @@ var gImgs = []
 var gImgId = 19
 var gId = 1
 
-var gKeywords = { funny: 5, sleepy: 5, politics: 4, OG: 7, cute: 5 }
+var gKeywords = {}
 
 function initMemes() {
   gImgs = createImgs()
+  createImg()
 }
+
+// function getKeywords() {
+//   return gKeywords
+// }
 
 function createImg(id, keywords) {
   let meme = {
     id,
     url: `./img/memes/${id}.jpg`,
-    keywords,
+    keywords: keywords,
   }
   return meme
 }
@@ -49,29 +54,48 @@ function createImgs() {
     ['cute', 'love'],
     ['cute', 'sleepy'],
     ['cute', 'sleepy'],
-    ['cute', 'funny', 'OG'],
+    ['cute', 'OG'],
     ['funny', 'OG'],
     ['funny'],
-    ['OG', 'funny'],
+    ['OG'],
     ['cute', 'funny'],
-    ['OG', 'funny', 'politics'],
-    ['funny'],
+    ['OG', 'politics'],
+    ['nice'],
     ['funny'],
     ['OG', 'epic'],
-    ['OG', 'matrix', 'epic', 'funny'],
-    ['OG', 'funny'],
+    ['OG', 'matrix', 'epic'],
+    ['OG'],
     ['funny'],
-    ['politics', 'funny'],
+    ['politics'],
+    ['funny'],
     ['funny'],
   ]
   let imgs = []
-  for (var i = 1; i <= 18; i++) {
+  keywords.forEach((keyword) => {
     var id = getId()
-    imgs.push(createImg(id, keywords[id]))
+    imgs.push(createImg(id, keyword))
     setId(++id)
-  }
+  })
+  keywords.forEach((keyword) => {
+    keyword.forEach((key) => {
+      if (!gKeywords[key]) gKeywords[key] = 0
+      gKeywords[key]++
+    })
+  })
+
   return imgs
 }
+
+// function keywordClicked(keyword) {
+
+// }
+
+// function keywordSizeUp(keyword) {
+//   gKeywords[keyword]++
+  
+// }
+
+
 
 function getImgById(id) {
   var imgs = getImgs()

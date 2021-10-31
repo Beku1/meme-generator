@@ -9,6 +9,7 @@
   </head>
 
   <body onload="init()">
+    <div class="background"></div>
     <div class="screen"></div>
     <header>
       <div class="main-layout">
@@ -30,27 +31,38 @@
         </div>
       </div>
     </header>
-
-    <main class="main-gallery">
-      <div class="search">
+   <main class="main-container">
+    <section class="main-gallery">
+      <!-- <div class="search">
         <input type="text" placeholder="Search" class="search-bar" />
+        <div class="keywords flex">
+        <span class="keyword">hello</span>
+        <span class="keyword">hello</span>
+        <span class="keyword">hello</span>
+        <span class="keyword">hello</span>
+        <span class="keyword">hello</span>
       </div>
+      <div class="more-keywords">
+        <button class="more-keywords-btn">More</button>
+      </div> -->
+      </div>
+      
 
       <div class="gallery"></div>
-    </main>
+    </section>
 
-    <div class="main-memes hidden">
-      <div class="search">
-        <input type="text" placeholder="Search" class="search-bar" />
-      </div>
+    <section class="main-memes hidden">
+      <div class="filter-bar">
+     
       <div class="meme-gallery"></div>
     </div>
+    </section>
 
-    <div class="memes main-layout hidden">
+    <section class="memes main-layout hidden">
       <div class="grid memes-gallery"></div>
-    </div>
+    </section>
 
-    <div class="meme-gen hidden">
+    <section class="meme-gen hidden">
       <div class="canvas-container">
         <canvas class="meme-gen-canvas"></canvas>
       </div>
@@ -136,7 +148,8 @@
           </button>
         </div>
       </div>
-    </div>
+    </section>
+  </main>
     <script
       src="https://kit.fontawesome.com/84b9566613.js"
       crossorigin="anonymous"

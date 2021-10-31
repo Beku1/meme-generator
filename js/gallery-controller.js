@@ -29,6 +29,9 @@ function renderGallery() {
   })
   elGallery.innerHTML = strHTML
 }
+function renderKeywords(keyWords){
+ 
+}
 
 function toggleGen(isGen = '') {
   let gallery = document.querySelector('.main-gallery')
@@ -53,3 +56,4 @@ function toggleGen(isGen = '') {
     renderMemesGallery()
   }
 }
+

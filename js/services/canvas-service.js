@@ -265,12 +265,49 @@ function renderSelectedLine(isSaving = false) {
 function onDown(ev) {
   const pos = getEvPos(ev)
   if (!isTextClicked(pos)) return
-
-  document.body.style.cursor = 'grabbing'
+  console.log('hello')
+    setTextDrag(true)
+ 
 }
+
+
+function onUp(){
+  setTextDrag(false)
+  
+}
+
 
 function setEditedMeme(meme) {
   setMeme(meme)
+}
+
+function setTextDrag(isDrag){
+  var meme = getMeme()
+  meme.lines[meme.selectedLineIdx].isDrag = isDrag
+  setMeme(meme)
+}
+
+function onMove(ev){
+     var meme = getMeme()
+   
+     if(meme.lines[meme.selectedLineIdx].isDrag){
+       console.log('hello')
+       const pos = getEvPos(ev)
+       const dx = pos.x - meme.lines[meme.selectedLineIdx].posX
+       const dy = pos.y - meme.lines[meme.selectedLineIdx].posY
+       moveLine(dx,dy)
+       meme = getMeme()
+       renderMeme(meme)
+     }
+
+}
+
+function moveLine(dx,dy){
+  var meme = getMeme()
+  meme.lines[meme.selectedLineIdx].posX += dx
+  meme.lines[meme.selectedLineIdx].posY += dy
+  setMeme(meme)
+ 
 }
 
 function getEvPos(ev) {

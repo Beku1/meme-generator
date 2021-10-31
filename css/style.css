@@ -16,6 +16,14 @@ body {
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid #dbdbdb;
+ 
+}
+
+.background{
+  position:fixed;
+  inset: 0;
+  background-color: #dfdbdb5e;
+  z-index:-1;
 }
 
 .logo {
@@ -31,7 +39,7 @@ body {
 
 .main-menu {
   margin-inline-end: 30px;
-
+  bottom:100%;
   width: 350px;
 }
 
@@ -62,9 +70,9 @@ body {
   margin-inline-start: 30px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
+  gap: 26px;
 }
-.gallery img {
+.gallery img, .meme-gallery img {
   background-size: contain;
   border-radius: 10px;
   width: 100%;
@@ -73,21 +81,21 @@ body {
   cursor: pointer;
 }
 
-.meme-gallery {
+.gallery img:hover{
+  box-shadow: 4px 4px 5px #ffaf53;
+}
+
+.meme-gallery img:hover{
+  box-shadow: 4px 4px 5px #f8911f;
+}
+
+.meme-gallery , .memes-gallery{
   padding: 30px 30px;
   margin-inline-end: 30px;
   margin-inline-start: 30px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-}
-.meme-gallery img {
-  background-size: contain;
-  border-radius: 10px;
-  width: 100%;
-  box-shadow: 1px 4px 5px #26282c;
-  transition: 0.2s;
-  cursor: pointer;
+  gap: 26px;
 }
 
 .search {
@@ -96,31 +104,52 @@ body {
   padding: 0 20px;
 }
 
-.memes-gallery {
-  padding: 30px 30px;
-  margin-inline-end: 30px;
-  margin-inline-start: 30px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-}
 
 .search-bar {
   font-size: 1.1rem;
-  width: 100%;
-  height: 42px;
-  background: white;
-  margin-inline-start: 20px;
-  margin-inline-end: 20px;
-  padding-inline-start: 4%;
-  margin-block-start: 30px;
-  border-radius: 81px;
-  border: 1px solid #e5e5e5;
+    width: 30%;
+    height: 42px;
+    background: #f8f8f8;
+    margin-inline-start: 40px;
+    
+    padding-inline-start: 4%;
+    margin-block-start: 30px;
+    border-radius: 81px;
+    border: 1px solid #dbdbdb;
 }
 
 .search-bar:focus {
   outline-style: none;
 }
+
+.keywords{
+  font-size: 1.1rem;
+    padding-top: 10px;
+    width: 45%;
+    height: 42px;
+    background: #f8f8f8;
+    margin-inline-start: 40px;
+    padding-inline-start: 1%;
+    padding-inline-end: 1%;
+    margin-block-start: 30px;
+    border-radius: 81px;
+    border: 1px solid #dbdbdb;
+    display: flex;
+    justify-content: space-around;
+    color: #e88820;
+}
+
+.keywords .keyword{
+  cursor: pointer;
+  transition: 0.6s;
+  
+}
+
+.keywords .keyword:hover{
+  color: #ec9625;
+  font-size: 1.1em;
+}
+
 
 /* canvas */
 
@@ -314,17 +343,22 @@ body {
 }
 
 .open-menu {
-  z-index: 2;
-  height: 350px;
-  width: 300px;
-  position: fixed;
-  right: 40%;
-  top: 50%;
-  transform: translate(50%, -50%);
-  border-radius: 35px;
-  background: linear-gradient(to top, #f9854e, #f9cc4e);
-  border: 1px solid black;
+    z-index: 2;
+    height: 350px;
+    width: 300px;
+    position: fixed;
+    right: 0;
+    left: 0;
+    margin-left: auto;
+    margin-right: auto;
+    bottom: 35%;
+    transition: 0.4s;
+ 
+    border-radius: 35px;
+    background: linear-gradient(to top, #f9854e, #f9cc4e);
+    border: 1px solid black;
 }
+
 
 .nav-open {
   z-index: 2;
@@ -430,11 +464,14 @@ body {
     right: 15px;
   }
   .nav-list {
-    opacity: 0;
-    padding-right: 100px;
+    visibility: hidden;
+    transition: none;
+    
   }
-  .open-menu {
-    padding-left: 100px;
+  .open-menu .nav-list {
+    visibility: visible;
+    transition: 0.6s;
+    /* padding-left: 100px; */
   }
 
   .opacity {
