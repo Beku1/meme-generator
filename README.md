@@ -5,6 +5,7 @@ Check it out : [https://beku1.github.io/meme-generator/](https://beku1.github.io
 ## Description 
 
 Meme generator made with Vanila js and canvas.
+My Second Coding Academy Course Sprint project.
 
 
 ## Technologies
